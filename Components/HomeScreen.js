@@ -2,8 +2,21 @@ import { StyleSheet, Text, View } from 'react-native'
 import MovieCard from './MovieCard';
 import TopRated from './TopRated';
 import NowPlay from './NowPlay';
+import SearchBox from './SearchBox';
 
 const HomeScreen = () => {
+
+
+
+
+ 
+
+
+
+  
+
+ 
+  
 
 
 
@@ -14,7 +27,7 @@ const HomeScreen = () => {
 
 <View style={styles.container}>
 
- 
+ <SearchBox />
   <h1 style={styles.text}>Popular</h1>
 
    <MovieCard   />
