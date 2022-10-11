@@ -1,21 +1,18 @@
 import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,TouchableHighlight } from 'react-native'
-import React, { useContext } from 'react'
-import { AppContext } from '../App'
-import { useNavigation } from '@react-navigation/native';
-
-const MovieCard = () => {
-  const navigation = useNavigation()
+import React,{useContext} from 'react'
+import { AppContext } from '../App';
 
 
-  const { movies, setMovies} =useContext(AppContext);   
+const TopRated = () => {
+
+  const { top, setTop} =useContext(AppContext);  
 
 
 
 
-const getPostURL = (posterpath) => {
-    return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
+ const getPostURL = (posterpath) => {
+  return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
 }
-
 
 
 
@@ -27,44 +24,39 @@ const getPostURL = (posterpath) => {
     <View style={{height:300, width:600, marginLeft:5, borderWidth:1, borderColor:'#dddddd',}}>
    
    <ScrollView horizontal={true} >
-    {movies.map((movie, index) => 
+    {top.map((top, index) => 
     <TouchableOpacity  style={styles.buttonStyle}>
     <View style={styles.imagecontainer}>
     
         <ScrollView horizontal={true} >
-        <TouchableOpacity  style={styles.buttonStyle}  onPress={() => navigation.navigate('Details')}>
+        <TouchableOpacity  style={styles.buttonStyle}>
      
-
             <Image
                style={{flex:1, height:null, width:150}}
-        source={{uri: getPostURL(movie.poster_path)}} >
-      </Image>
-      
-
+        source={{uri:getPostURL(top.poster_path)}} 
+      />
 
 </TouchableOpacity>
      </ScrollView>
      
      </View>
      <TouchableOpacity  style={styles.buttonStyle}>
-     <TouchableHighlight onPress={() =>addFavourites(movie)}>
+     <TouchableHighlight onPress={() =>addFavourites(top)}>
 
-     
         <View style={styles.button}>
 
-        <Text style={styles.title}>
-          {movie.title}
-          </Text>
+          <Text style={styles.title}> 
+            {top.title}
+            </Text>
 
-        <View style={styles.others}>
-          {movie.release_date}
+            <View style={styles.others}>
+          {top.release_date}
           </View>
 
-        <View style={styles.rate}>
-          {movie.vote_average}*
+          <View style={styles.rate}>
+          {top.vote_average}*
           </View>
 
-       
 
         </View>
 
@@ -74,7 +66,6 @@ const getPostURL = (posterpath) => {
 
      
      )}
-     
        </ScrollView>
      </View>
     
@@ -85,7 +76,7 @@ const getPostURL = (posterpath) => {
 }
 
 
-export default MovieCard
+export default TopRated
 
 const styles = StyleSheet.create({
 
@@ -95,7 +86,7 @@ const styles = StyleSheet.create({
       paddingTop: 50,
       height:400,
       width:500,
-
+      
       },
       imagecontainer: {
         height:200,
@@ -118,7 +109,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#051E34",
         color:'white',
         paddingBottom:40,
-
       },
 
       title:{
@@ -126,7 +116,6 @@ const styles = StyleSheet.create({
         color:'white',
         fontFamily:'cursive',
         marginTop:15,
-        
 
       },
       others:{

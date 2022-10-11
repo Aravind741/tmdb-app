@@ -1,39 +1,37 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect,useState } from 'react'
-import axios from 'axios';
 import MovieCard from './MovieCard';
+import TopRated from './TopRated';
+import NowPlay from './NowPlay';
 
 const HomeScreen = () => {
-
-  const[movies,setMovies] = useState([]);
-
-  useEffect(()=> {
-     axios.get('https://api.themoviedb.org/3/movie/popular?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1')
-     
-     .then((response)=>{setMovies(response.data.results)})
-
-     .catch(err =>{console.log(err)})
-
-
-  },[])
-
- 
-
 
 
 
 
   return (
 
-   
-<View>
-  <h1>Popular</h1>
+    
 
-   <MovieCard  movies={movies} />
+<View style={styles.container}>
+
+ 
+  <h1 style={styles.text}>Popular</h1>
+
+   <MovieCard   />
 
   
+  <h1 style={styles.text}>Top Rated</h1>
+
+    <TopRated />
+
+
+    <h1 style={styles.text}>Now Playing</h1>
+
+<NowPlay />
+
+
+
 </View>
-      
        
     
   )
@@ -43,6 +41,13 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
 
-  
+  container:{
+    backgroundColor:'black',
+
+  },
+  text:{
+    color:'white',
+  }
+
 
 })
