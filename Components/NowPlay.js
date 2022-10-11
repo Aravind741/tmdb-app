@@ -1,21 +1,17 @@
 import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,TouchableHighlight } from 'react-native'
-import React, { useContext } from 'react'
-import { AppContext } from '../App'
-import { useNavigation } from '@react-navigation/native';
+import React,{useContext} from 'react'
+import { AppContext } from '../App';
 
-const MovieCard = () => {
-  const navigation = useNavigation()
+const NowPlay = () => {
 
-
-  const { movies, setMovies} =useContext(AppContext);   
+ 
+  const { nows, setNows} =useContext(AppContext);  
 
 
 
-
-const getPostURL = (posterpath) => {
-    return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
+ const getPostURL = (posterpath) => {
+  return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
 }
-
 
 
 
@@ -24,47 +20,42 @@ const getPostURL = (posterpath) => {
   return (
 
     <SafeAreaView>
-    <View style={{height:300, width:600, marginLeft:5, borderWidth:1, borderColor:'#dddddd',}}>
+   <View style={{height:300, width:600, marginLeft:5, borderWidth:1, borderColor:'#dddddd',}}>
    
    <ScrollView horizontal={true} >
-    {movies.map((movie, index) => 
+    {nows.map((now, index) => 
     <TouchableOpacity  style={styles.buttonStyle}>
     <View style={styles.imagecontainer}>
     
         <ScrollView horizontal={true} >
-        <TouchableOpacity  style={styles.buttonStyle}  onPress={() => navigation.navigate('Details')}>
+        <TouchableOpacity  style={styles.buttonStyle}>
      
-
             <Image
                style={{flex:1, height:null, width:150}}
-        source={{uri: getPostURL(movie.poster_path)}} >
-      </Image>
-      
-
+        source={{uri:getPostURL(now.poster_path)}} 
+      />
 
 </TouchableOpacity>
      </ScrollView>
      
      </View>
      <TouchableOpacity  style={styles.buttonStyle}>
-     <TouchableHighlight onPress={() =>addFavourites(movie)}>
+     <TouchableHighlight onPress={() =>addFavourites(now)}>
 
-     
         <View style={styles.button}>
 
-        <Text style={styles.title}>
-          {movie.title}
-          </Text>
+          <Text style={styles.title}> 
+            {now.title}
+            </Text>
 
-        <View style={styles.others}>
-          {movie.release_date}
+            <View style={styles.others}>
+          {now.release_date}
           </View>
 
-        <View style={styles.rate}>
-          {movie.vote_average}*
-          </View>
 
-       
+          <View style={styles.rate}>
+          {now.vote_average}*
+          </View>
 
         </View>
 
@@ -74,7 +65,6 @@ const getPostURL = (posterpath) => {
 
      
      )}
-     
        </ScrollView>
      </View>
     
@@ -85,7 +75,7 @@ const getPostURL = (posterpath) => {
 }
 
 
-export default MovieCard
+export default NowPlay
 
 const styles = StyleSheet.create({
 
@@ -95,7 +85,7 @@ const styles = StyleSheet.create({
       paddingTop: 50,
       height:400,
       width:500,
-
+      
       },
       imagecontainer: {
         height:200,
@@ -118,7 +108,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#051E34",
         color:'white',
         paddingBottom:40,
-
       },
 
       title:{
@@ -126,7 +115,6 @@ const styles = StyleSheet.create({
         color:'white',
         fontFamily:'cursive',
         marginTop:15,
-        
 
       },
       others:{
