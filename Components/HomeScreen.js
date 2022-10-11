@@ -2,10 +2,15 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect,useState } from 'react'
 import axios from 'axios';
 import MovieCard from './MovieCard';
+import SearchBox from './SearchBox';
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
 
   const[movies,setMovies] = useState([]);
+
+ 
+
+
 
   useEffect(()=> {
      axios.get('https://api.themoviedb.org/3/movie/popular?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1')
@@ -18,7 +23,7 @@ const HomeScreen = () => {
   },[])
 
  
-
+  
 
 
 
@@ -27,7 +32,12 @@ const HomeScreen = () => {
 
    
 <View>
+
+<SearchBox  />
+
   <h1>Popular</h1>
+
+ 
 
    <MovieCard  movies={movies} />
 
