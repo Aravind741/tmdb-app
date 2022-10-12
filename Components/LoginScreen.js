@@ -4,6 +4,7 @@ import {  getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } f
 import firebase from '../datastore/Firebase';
 import { useNavigation } from '@react-navigation/native';
 
+
 // import { KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native-web'
 
 const LoginScreen = () => {
