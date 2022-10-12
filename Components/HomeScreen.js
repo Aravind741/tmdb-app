@@ -1,16 +1,27 @@
 import { StyleSheet, Text, View } from 'react-native'
 import MovieCard from './MovieCard';
+
 import TopRated from './TopRated';
 import NowPlay from './NowPlay';
+
+
 import SearchBox from './SearchBox';
 
 const HomeScreen = () => {
 
 
-
+  
 
  
 
+
+
+
+
+
+
+ 
+  
 
 
   
@@ -22,8 +33,7 @@ const HomeScreen = () => {
 
 
   return (
-
-    
+   
 
 <View style={styles.container}>
 
@@ -32,7 +42,6 @@ const HomeScreen = () => {
 
    <MovieCard   />
 
-  
   <h1 style={styles.text}>Top Rated</h1>
 
     <TopRated />
@@ -58,6 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
 
   },
+
   text:{
     color:'white',
   }

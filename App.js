@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Components/HomeScreen'
 import LoginScreen from './Components/LoginScreen';
 import Details from './Components/Details';
+
 import SearchScreen from './Components/SearchScreen';
 import React, { useEffect,useState, createContext } from 'react'
 import axios from 'axios';
@@ -15,12 +16,15 @@ export const AppContext = createContext({})
  function App() {
 
 
+
   const[movies,setMovies] = useState([]);
   const[top,setTop] = useState([]);
   const[nows,setNows] = useState([]);
   const [movieList,setMovieList] = useState('')
-
+  
   const [searchValue,setSearchValue] = useState('')
+
+
 
 
 
@@ -42,6 +46,11 @@ export const AppContext = createContext({})
     
     .then((response)=>{setTop(response.data.results)})
   
+
+
+  
+ 
+
 
   
   useEffect(()=> {
@@ -66,26 +75,34 @@ export const AppContext = createContext({})
 },[])
   
  
+
  },[searchValue])
 
   
 
   return (
+
     <AppContext.Provider value={{ movies,setMovies,top,setTop,nows,setNows , searchValue, setSearchValue, movieList,setMovieList}} >
   
-   
+
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen options={{headerShown:false}} name="Login" component={LoginScreen} />
+
         <Stack.Screen options={{headerShown:false}}  name="Home" component={HomeScreen}  />
         <Stack.Screen name="Searching Details" component={SearchScreen}  />
         <Stack.Screen name="Details" component={Details} />
+
+
       </Stack.Navigator>
     </NavigationContainer>
 
     </AppContext.Provider>
+
   )
 }    
+
+
 
 
 const styles = StyleSheet.create({
