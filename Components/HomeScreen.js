@@ -9,29 +9,6 @@ import SearchBox from './SearchBox';
 
 const HomeScreen = () => {
 
-
-  
-
- 
-
-
-
-
-
-
-
- 
-  
-
-
-  
-
- 
-  
-
-
-
-
   return (
    
 
