@@ -1,7 +1,11 @@
+
 import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,TouchableHighlight } from 'react-native'
 import React,{useState,useEffect} from 'react'
+
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+
+
 
 
 const Details = ({route}) => {
@@ -26,10 +30,13 @@ console.log('HI',id)
 }
 
 
-  
 
 
+
+    
   return (
+    <SafeAreaView>
+
 
     <View  style={styles.container}>
    
@@ -80,6 +87,11 @@ console.log('HI',id)
      
        
      </View>
+
+
+
+</SafeAreaView>
+
 
   )
 }
