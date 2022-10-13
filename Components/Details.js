@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: '#024E6F',
     color:'white',
-    
+
 
   },
 
