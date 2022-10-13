@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity, Ima
 
 import React, { useContext } from 'react'
 import { AppContext } from '../App'
+import { useNavigation } from '@react-navigation/native';
 
 
 const SearchingMovieList = () => {
-
+    const navigation = useNavigation()
     const { searchValue, setSearchValue, movieList, setMovieList } = useContext(AppContext);
 
     const getPostURL = (posterpath) => {
@@ -17,26 +18,34 @@ const SearchingMovieList = () => {
         <SafeAreaView>
 
 
-            <View style={{ height: 270, width: 600, marginLeft: 5, borderWidth: 0.5, borderColor: '#dddddd', backgroundColor: "black" }}>
-
-                <ScrollView horizontal={true} >
+            
                     {movieList.map((mov, index) =>
-                        <TouchableOpacity style={styles.buttonStyle}>
-                            <View style={styles.imagecontainer}>
+                  <View style={styles.fixToText}>  
+                                
+<TouchableOpacity style={styles.imagecontainer} >
 
-                                <ScrollView horizontal={true} >
-                                    <TouchableOpacity style={styles.buttonStyle}>
+    
+    <ScrollView horizontal={true} >
+    <TouchableOpacity  style={styles.buttonStyle} onPress={() => {
+        navigation.navigate('Details', {
+            id:`${mov.id}` 
+            });
+             }} >
+ 
+        <Image
+           style={{flex:1, height:300, width:150}}
+    source={{uri:getPostURL(mov.poster_path)}} 
+  />
 
-                                        <Image
-                                            style={{ flex: 1, height: null, width: 150 }}
-                                            source={{ uri: getPostURL(mov.poster_path) }}
-                                        />
+</TouchableOpacity>
+ </ScrollView>
 
-                                    </TouchableOpacity>
-                                </ScrollView>
 
-                            </View>
-                            <TouchableOpacity style={styles.buttonStyle}>
+
+
+
+                <TouchableOpacity style={styles.buttonStyle}>
+
                                 <TouchableHighlight >
                                     <View style={styles.button}>
                                         <Text>Add To Favourites</Text>
@@ -44,13 +53,14 @@ const SearchingMovieList = () => {
                                     </View>
                                 </TouchableHighlight>
                             </TouchableOpacity>
-                        </TouchableOpacity>
+                            </TouchableOpacity>
+                                       
+                            </View>         
+                          
 
 
                     )}
-                </ScrollView>
-            </View>
-
+             
         </SafeAreaView>
     )
 }
@@ -88,4 +98,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#DDDDDD",
         padding: 10
       },
-})
+      fixToText: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+})                                                                                      

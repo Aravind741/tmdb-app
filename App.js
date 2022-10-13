@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Components/HomeScreen'
 import LoginScreen from './Components/LoginScreen';
 import Details from './Components/Details';
-
 import SearchScreen from './Components/SearchScreen';
 import React, { useEffect,useState, createContext } from 'react'
 import axios from 'axios';
@@ -45,7 +44,10 @@ export const AppContext = createContext({})
     axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1`)
     
     .then((response)=>{setTop(response.data.results)})
-  
+    .catch(err =>{console.log(err)})
+
+
+  },[])
 
 
   
@@ -61,7 +63,8 @@ export const AppContext = createContext({})
     .catch(err =>{console.log(err)})
 
 
- },[])
+  },[searchValue])
+
 
 
  useEffect(()=> {
@@ -76,8 +79,7 @@ export const AppContext = createContext({})
   
  
 
- },[searchValue])
-
+ 
   
 
   return (
