@@ -1,12 +1,14 @@
 import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,TouchableHighlight } from 'react-native'
 import React,{useContext} from 'react'
 import { AppContext } from '../App';
+import { useNavigation } from '@react-navigation/native';
 
 const NowPlay = () => {
 
  
   const { nows, setNows} =useContext(AppContext);  
 
+  const navigation = useNavigation()
 
 
  const getPostURL = (posterpath) => {
@@ -28,7 +30,11 @@ const NowPlay = () => {
     <View style={styles.imagecontainer}>
     
         <ScrollView horizontal={true} >
-        <TouchableOpacity  style={styles.buttonStyle}>
+        <TouchableOpacity  style={styles.buttonStyle} onPress={() => {
+          navigation.navigate('Details',{ 
+            id:`${now.id}`
+            }) 
+            } }>
      
             <Image
                style={{flex:1, height:null, width:150}}
@@ -113,7 +119,7 @@ const styles = StyleSheet.create({
       title:{
         textAlign:'center',
         color:'white',
-        fontFamily:'cursive',
+        fontFamily:'verdana',
         marginTop:15,
 
       },

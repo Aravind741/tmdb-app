@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Components/HomeScreen'
 import LoginScreen from './Components/LoginScreen';
 import Details from './Components/Details';
-
 import SearchScreen from './Components/SearchScreen';
 import React, { useEffect,useState, createContext } from 'react'
 import axios from 'axios';

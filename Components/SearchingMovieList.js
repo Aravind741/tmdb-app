@@ -33,7 +33,9 @@ const SearchingMovieList = () => {
              }} >
  
         <Image
-           style={{flex:1, height:null, width:150}}
+
+           style={{flex:1, height:300, width:150}}
+
     source={{uri:getPostURL(mov.poster_path)}} 
   />
 
@@ -102,4 +104,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
       },
-})
+
+})                                                                                      
+

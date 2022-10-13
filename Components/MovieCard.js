@@ -1,4 +1,4 @@
-import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,TouchableHighlight } from 'react-native'
+import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity } from 'react-native'
 import React, { useContext } from 'react'
 import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
@@ -32,22 +32,26 @@ const getPostURL = (posterpath) => {
     <View style={styles.imagecontainer}>
     
         <ScrollView horizontal={true} >
-        <TouchableOpacity  style={styles.buttonStyle}  onPress={() => navigation.navigate('Details')}>
+          
+        <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
+          navigation.navigate('Details',{ 
+            id:`${movie.id}`
+            }) 
+            } } >
      
+        
 
             <Image
                style={{flex:1, height:null, width:150}}
         source={{uri: getPostURL(movie.poster_path)}} >
       </Image>
-      
-
+     
 
 </TouchableOpacity>
      </ScrollView>
      
      </View>
      <TouchableOpacity  style={styles.buttonStyle}>
-     <TouchableHighlight onPress={() =>addFavourites(movie)}>
 
      
         <View style={styles.button}>
@@ -68,7 +72,6 @@ const getPostURL = (posterpath) => {
 
         </View>
 
-        </TouchableHighlight>
         </TouchableOpacity>
         </TouchableOpacity>
 
@@ -100,9 +103,8 @@ const styles = StyleSheet.create({
       imagecontainer: {
         height:200,
          width:500,
-         borderWidth:1,
-         borderColor:'#dddddd',
-         position:'relative',
+        
+         
       
          
       },
@@ -124,13 +126,13 @@ const styles = StyleSheet.create({
       title:{
         textAlign:'center',
         color:'white',
-        fontFamily:'cursive',
+        fontFamily:'verdana',
         marginTop:15,
         
 
       },
       others:{
-        fontFamily:'cursive',
+        fontSize:15,
       },
       rate:{
         backgroundColor:'green',
