@@ -2,7 +2,7 @@ import { StyleSheet, View, SafeAreaView, TextInput, Button } from 'react-native'
 import React, {useContext } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../App'
-
+import { HStack } from '@react-native-material/core';
 
 const SearchBox = () => {
     
@@ -16,7 +16,7 @@ const SearchBox = () => {
     <View  style={styles.full}>
 
 
-<TextInput  style={{ height: 50, borderColor: 'red', borderWidth: 2,width:380, textAlign:'center',backgroundColor:'white',marginLeft:100,borderRadius:5,marginTop:80, }}
+<TextInput  style={{ height: 30, borderColor: 'black', borderWidth: 2,width:300, textAlign:'center',backgroundColor:'white',borderRadius:5, }}
         placeholder='Type to search movies..'
 
     onChangeText={(val) => setSearchValue(val) } onSubmitEditing={() => navigation.navigate('Searching Details')} >
@@ -25,7 +25,6 @@ const SearchBox = () => {
 
 
 </View>
-
 </SafeAreaView> 
 
   )
@@ -36,10 +35,9 @@ export default SearchBox
 const styles = StyleSheet.create({
 
   full:{
-    backgroundColor:'#024E6F',
-    padding:60,
-    width:'fit-content',
-
+    backgroundColor:'orange',
+    width:'100%',
+    padding:30
   }
 
 })

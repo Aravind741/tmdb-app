@@ -2,6 +2,8 @@ import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,T
 import React,{useContext} from 'react'
 import { AppContext } from '../App';
 import { useNavigation } from '@react-navigation/native';
+import { HStack, } from "@react-native-material/core";
+
 
 const NowPlay = () => {
 
@@ -22,9 +24,12 @@ const NowPlay = () => {
   return (
 
     <SafeAreaView>
-   <View style={{height:300, width:600, marginLeft:5, borderWidth:1, borderColor:'#dddddd',}}>
+   <View style={{height:300, width:600,}}>
    
    <ScrollView horizontal={true} >
+
+   <HStack m={0} spacing={10}>
+
     {nows.map((now, index) => 
     <TouchableOpacity  style={styles.buttonStyle}>
     <View style={styles.imagecontainer}>
@@ -41,36 +46,45 @@ const NowPlay = () => {
         source={{uri:getPostURL(now.poster_path)}} 
       />
 
+
+
+
+<View style={styles.button}>
+
+<Text style={styles.title}> 
+  {now.title}
+  </Text>
+
+  <View style={styles.others}>
+{now.release_date}
+</View>
+
+
+
+
+</View>
+
+
+
+
+
+
+
+
 </TouchableOpacity>
      </ScrollView>
      
      </View>
-     <TouchableOpacity  style={styles.buttonStyle}>
-     <TouchableHighlight onPress={() =>addFavourites(now)}>
 
-        <View style={styles.button}>
+       
 
-          <Text style={styles.title}> 
-            {now.title}
-            </Text>
-
-            <View style={styles.others}>
-          {now.release_date}
-          </View>
-
-
-          <View style={styles.rate}>
-          {now.vote_average}*
-          </View>
-
-        </View>
-
-        </TouchableHighlight>
-        </TouchableOpacity>
         </TouchableOpacity>
 
      
      )}
+
+</HStack>
+
        </ScrollView>
      </View>
     
@@ -94,26 +108,22 @@ const styles = StyleSheet.create({
       
       },
       imagecontainer: {
-        height:200,
-         width:500,
-         borderWidth:1,
-         borderColor:'#dddddd',
-         position:'relative',
-      
+        height:300,
+        width:600,
+    
          
       },
+
       buttonStyle: {
         marginLeft:2,
-        backgroundColor: 'grey',
         borderWidth: 1,
         borderColor: '#141414',
-        width: 150
+        width: 150,
       },
       button: {
         alignItems: "center",
         backgroundColor: "#051E34",
         color:'white',
-        paddingBottom:40,
       },
 
       title:{
@@ -124,7 +134,9 @@ const styles = StyleSheet.create({
 
       },
       others:{
-        fontFamily:'cursive',
+        fontSize:15,
+        margin:10,
+
       },
       rate:{
         backgroundColor:'green',

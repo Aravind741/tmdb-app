@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import MovieCard from './MovieCard';
-
 import TopRated from './TopRated';
 import NowPlay from './NowPlay';
-import { useNavigation } from '@react-navigation/native';
+import { Stack, Avatar } from "@react-native-material/core";
+import { Surface, FAB } from "@react-native-material/core";
+
 
 import SearchBox from './SearchBox';
 import { signOut, getAuth } from 'firebase/auth';
@@ -28,6 +29,7 @@ const HomeScreen = ({route}) => {
    
 
 <View style={styles.container}>
+
  <TouchableOpacity style={styles.text} onPress={handlelogout}
                     
                 >
@@ -37,6 +39,7 @@ const HomeScreen = ({route}) => {
   <h1 style={styles.text}>Popular</h1>
 
    <MovieCard   />
+
 
   <h1 style={styles.text}>Top Rated</h1>
 
@@ -60,8 +63,7 @@ export default HomeScreen
 const styles = StyleSheet.create({
 
   container:{
-    backgroundColor:'black',
-
+    backgroundColor:'#242526',
   },
 
   text:{
