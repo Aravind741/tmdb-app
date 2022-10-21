@@ -1,7 +1,8 @@
 import React ,{useEffect, useState} from 'react'
 import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
 import {  getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
-import firebase from '../datastore/Firebase';
+
+import { auth } from '../datastore/Firebase';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -27,10 +28,9 @@ useEffect(() => {
 },[])
 
 
-    const auth = getAuth();
     const handleSignUp = () => {
  
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword( email, password)
         .then(userCredentials => {
             const user =userCredentials.user;
             console.log(user.email);
@@ -43,6 +43,18 @@ useEffect(() => {
     
     const user = userCredential.user;
     console.log('Login succes',user.email);
+    
+
+
+
+
+
+
+
+
+
+
+
     
   })
   .catch(error => alert(error.message))
