@@ -1,9 +1,11 @@
 
-import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,TouchableHighlight } from 'react-native'
+import { StyleSheet, Text,Image, View,SafeAreaView,TextInput,TouchableOpacity,TouchableHighlight } from 'react-native'
 import React,{useState,useEffect} from 'react'
-
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+import { ImageBackground } from 'react-native';
+import { Surface, FAB } from "@react-native-material/core";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 
 
@@ -33,49 +35,72 @@ console.log('HI',id)
 
 
 
+
+
     
   return (
     <SafeAreaView>
 
 
     <View  style={styles.container}>
-   
+  
+    
 
     <TouchableOpacity  style={styles.buttonStyle}>
     <View style={styles.imagecontainer}>
     
-
+    
             <Image
-               style={{flex:1, height:null, borderRadius:50,width:300,margin:40,}}
+               style={{flex:1, height:null, width:300,margin:60,}}
         source={{uri: getPostURL(movieDetails.poster_path)}} >
       </Image>
-     
-     
-     
+    
+    
+      
      </View>
      <TouchableOpacity  style={styles.buttonStyle}>
      <TouchableHighlight >
 
      
+    
         <View style={styles.button}>
 
+
+        <Surface
+      elevation={6}
+      category="medium"
+     style={{backgroundColor:'orange',padding:30}}
+    >
+      
         <Text style={styles.title}>
           {movieDetails.title}
           </Text>
 
         <View style={styles.others}>
-          {movieDetails.release_date}
+        {movieDetails.release_date}
           </View>
 
+<br />
+
         <View style={styles.overview}>
+      <Text style={{fontFamily:'sans-serif',fontWeight:'bold'}}>Overview:</Text> <br></br> 
           {movieDetails.overview}
         </View>
-       
+       <br />
+
         <View>
-         Popularity:{movieDetails.popularity}
+       <Text style={{fontWeight:'bold',fontFamily:'sans-serif'}}> Popularity:</Text> {movieDetails.popularity}
         </View>
+
+        <br />
+
+        <View>
+        <Text  style={{fontWeight:'bold',fontFamily:'sans-serif'}}> Vote Count:</Text>{movieDetails.vote_count}
+        </View>
+<br />
         
 
+      </Surface>
         </View>
 
         </TouchableHighlight>
@@ -85,13 +110,12 @@ console.log('HI',id)
      
      
      
-       
      </View>
 
+    
 
 
 </SafeAreaView>
-
 
   )
 }
@@ -102,9 +126,8 @@ export default Details
 
 const styles = StyleSheet.create({
   container: {
-   backgroundColor:'black',
-   width:'fit-content',
-
+   backgroundColor:'#242526',
+    
 
   },
   imagecontainer: {
@@ -116,23 +139,26 @@ const styles = StyleSheet.create({
   
   button: {
     alignItems: "center",
-    backgroundColor: '#024E6F',
-    color:'white',
+    backgroundColor: 'orange',
+    color:'black',
+    padding:40,
+
     
 
   },
 
   title:{
     textAlign:'center',
-    color:'white',
-    fontFamily:'verdana',
+    color:'black',
+    fontFamily:'sans-serif',
     marginTop:15,
-    fontSize:40,
-    
+     fontWeight:'bold',
+     fontSize:25,    
 
   },
   others:{
     fontFamily:'cursive',
+    alignItems:'center',
   },
   rate:{
     backgroundColor:'green',
@@ -142,10 +168,8 @@ const styles = StyleSheet.create({
   },
 
   overview:{
-    width:300,
-    border:5,
-    borderColor:'green',
-    borderRadius:10,
+    fontFamily:'sans-serif',
+    fontWeight:'50',
 
   }
 

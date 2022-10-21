@@ -2,6 +2,8 @@ import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity }
 import React, { useContext } from 'react'
 import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
+import { HStack,Spacer } from "@react-native-material/core";
+
 
 const MovieCard = () => {
   const navigation = useNavigation()
@@ -24,14 +26,20 @@ const getPostURL = (posterpath) => {
   return (
 
     <SafeAreaView>
-    <View style={{height:300, width:600, marginLeft:5, borderWidth:1, borderColor:'#dddddd',}}>
+
+
+    <View style={{height:300, width:600,}}>
+   
    
    <ScrollView horizontal={true} >
+
+   <HStack m={0} spacing={10}>
+
     {movies.map((movie, index) => 
-    <TouchableOpacity  style={styles.buttonStyle}>
+    <TouchableOpacity  style={styles.buttonStyle} >
     <View style={styles.imagecontainer}>
     
-        <ScrollView horizontal={true} >
+        <ScrollView horizontal={true}>
           
         <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
           navigation.navigate('Details',{ 
@@ -42,45 +50,39 @@ const getPostURL = (posterpath) => {
         
 
             <Image
-               style={{flex:1, height:null, width:150}}
+               style={{flex:1, height:null, width:150,}}
         source={{uri: getPostURL(movie.poster_path)}} >
       </Image>
+
+
+
      
+      <View style={styles.button}>
+
+<Text style={styles.title}>
+  {movie.title}
+  </Text>
+
+<View style={styles.others}>
+  {movie.release_date}
+  </View>
+
+</View>
+
 
 </TouchableOpacity>
      </ScrollView>
      
      </View>
-     <TouchableOpacity  style={styles.buttonStyle}>
-
-     
-        <View style={styles.button}>
-
-        <Text style={styles.title}>
-          {movie.title}
-          </Text>
-
-        <View style={styles.others}>
-          {movie.release_date}
-          </View>
-
-        <View style={styles.rate}>
-          {movie.vote_average}*
-          </View>
-
-       
-
-        </View>
-
-        </TouchableOpacity>
+        
         </TouchableOpacity>
 
      
      )}
-     
+          </HStack>
+
        </ScrollView>
      </View>
-    
      </SafeAreaView>
       
 
@@ -99,40 +101,39 @@ const styles = StyleSheet.create({
       height:400,
       width:500,
 
+
       },
       imagecontainer: {
-        height:200,
-         width:500,
-        
+        height:"100%",
+         width:"100%",
          
       
          
       },
       buttonStyle: {
         marginLeft:2,
-        backgroundColor: 'grey',
         borderWidth: 1,
         borderColor: '#141414',
-        width: 150
+        width: 150,
       },
+
       button: {
         alignItems: "center",
         backgroundColor: "#051E34",
         color:'white',
-        paddingBottom:40,
-
+        padding:10,
       },
 
       title:{
         textAlign:'center',
         color:'white',
         fontFamily:'verdana',
-        marginTop:15,
         
 
       },
       others:{
         fontSize:15,
+        margin:10,
       },
       rate:{
         backgroundColor:'green',

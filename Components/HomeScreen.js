@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import MovieCard from './MovieCard';
-
 import TopRated from './TopRated';
 import NowPlay from './NowPlay';
-
+import { Stack, Avatar } from "@react-native-material/core";
+import { Surface, FAB } from "@react-native-material/core";
 
 import SearchBox from './SearchBox';
 
@@ -14,10 +14,13 @@ const HomeScreen = () => {
 
 <View style={styles.container}>
 
- <SearchBox />
+ <SearchBox /> 
+
+
   <h1 style={styles.text}>Popular</h1>
 
    <MovieCard   />
+
 
   <h1 style={styles.text}>Top Rated</h1>
 
@@ -41,8 +44,7 @@ export default HomeScreen
 const styles = StyleSheet.create({
 
   container:{
-    backgroundColor:'black',
-
+    backgroundColor:'#242526',
   },
 
   text:{
