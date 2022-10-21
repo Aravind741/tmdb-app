@@ -1,22 +1,41 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import MovieCard from './MovieCard';
 import TopRated from './TopRated';
 import NowPlay from './NowPlay';
 import { Stack, Avatar } from "@react-native-material/core";
 import { Surface, FAB } from "@react-native-material/core";
 
-import SearchBox from './SearchBox';
 
-const HomeScreen = () => {
+import SearchBox from './SearchBox';
+import { signOut, getAuth } from 'firebase/auth';
+
+const HomeScreen = ({route}) => {
+
+  const navigation = useNavigation()
+
+  const {UID} = route.params;
+  console.log('hiiiii', UID)
+  const auth = getAuth();
+  const handlelogout = () => {
+    signOut(auth)
+    .then(() => {
+      navigation.navigate('Login')
+    })
+    
+}
+
 
   return (
    
 
 <View style={styles.container}>
 
- <SearchBox /> 
-
-
+ <TouchableOpacity style={styles.text} onPress={handlelogout}
+                    
+                >
+                    <Text style={styles.text}> Logout</Text>
+                </TouchableOpacity>
+ <SearchBox />
   <h1 style={styles.text}>Popular</h1>
 
    <MovieCard   />
