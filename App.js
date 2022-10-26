@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Components/HomeScreen'
 import LoginScreen from './Components/LoginScreen';
 import Details from './Components/Details';
+import Tvdetails from './Components/Tvdetails'
 import SearchScreen from './Components/SearchScreen';
 import React, { useEffect,useState, createContext } from 'react'
 import axios from 'axios';
@@ -94,6 +95,7 @@ export const AppContext = createContext({})
         <Stack.Screen options={{headerShown:false}}  name="Home" component={HomeScreen}  />
         <Stack.Screen name="Searching Details" component={SearchScreen}  />
         <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="Tvdetails" component={Tvdetails} />
 
 
       </Stack.Navigator>
