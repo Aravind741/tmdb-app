@@ -2,29 +2,42 @@ import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,B
 import React, { useContext,useState,useEffect } from 'react'
 import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
-import { HStack,Box } from "@react-native-material/core";
+import { HStack,Spacer } from "@react-native-material/core";
 
 import axios from 'axios';
 
-const MovieCard = () => {
+const TvTrending = () => {
   const navigation = useNavigation()
 
 
   const { movies, setMovies} =useContext(AppContext);   
-  const[movieUpdate,setMovieUpdate] = useState([]);
+  const[todayTrending,setTodayTrending] = useState([]);
+  const[weekTrending,setWeekTrending] = useState([]);
+
   const[count,setCount] = useState(0);
 
 
   useEffect(()=> {
-    axios.get('https://api.themoviedb.org/3/tv/popular?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1')
+    axios.get('https://api.themoviedb.org/3/trending/tv/day?api_key=de93eb585060bf0531bc637876b11f0e')
     
-    .then((response)=>{setMovieUpdate(response.data.results)})
+    .then((response)=>{setTodayTrending(response.data.results)})
 
     .catch(err =>{console.log(err)})
 
 
  },[])
- console.log("list", movieUpdate)
+ console.log("list", todayTrending)
+
+ useEffect(()=> {
+    axios.get('https://api.themoviedb.org/3/trending/tv/week?api_key=de93eb585060bf0531bc637876b11f0e')
+    
+    .then((response)=>{setWeekTrending(response.data.results)})
+
+    .catch(err =>{console.log(err)})
+
+
+ },[])
+ console.log("list", weekTrending)
 
 const getPostURL = (posterpath) => {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
@@ -48,19 +61,17 @@ const onClick  = () => {
   return (
    < View>
     <HStack m={4} spacing={6}>
-    <View style={{ width: 80, height: 40,  }} > <h1 style={styles.text}>Popular </h1> </View>
-    <View style={{ width: 80, height: 40, }} ><Button title="movies" style={{
+    <View style={{ width: 130, height: 40,  }} > <h1 style={styles.text}>Trending Tv shows</h1> </View>
+    <View style={{ width: 80, height: 40, }} ><Button title="Today" style={{
        textAlign: "center", fontSize:15
     }}  onPress={onClick} />
     
     </View> 
-    <View style={{ width: 80, height: 40, }}> <Button title="onTV" style={{
+    <View style={{ width: 90, height: 40, }}> <Button title="thisWeek" style={{
        textAlign: "center", fontSize:15
     }}  onPress={onClick1} /></View>
     <View style={{ width: 80, height: 40, }} ></View>
   </HStack>
-
-    <Box  m={4} >
 
     <SafeAreaView>
 {/*Here we will return the view when state is true 
@@ -76,16 +87,16 @@ const onClick  = () => {
    <HStack m={0} spacing={10}>
     
 <>
-    {count===0 && movies.map((movie, index) => 
+    {count===0 && todayTrending.map((today, index) => 
     <TouchableOpacity  style={styles.buttonStyle} >
     <View style={styles.imagecontainer}>
     
         <ScrollView horizontal={true}>
           
         <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
-          navigation.navigate('Details',{ 
-            id:`${movie.id}`,
-        
+          navigation.navigate('Tvdetails',{ 
+            id:`${today.id}`,
+           
             }) 
             } } >
      
@@ -93,7 +104,7 @@ const onClick  = () => {
 
             <Image
                style={{flex:1, height:null, width:150,}}
-        source={{uri: getPostURL(movie.poster_path)}} >
+        source={{uri: getPostURL(today.poster_path)}} >
       </Image>
 
 
@@ -102,11 +113,11 @@ const onClick  = () => {
       <View style={styles.button}>
 
 <Text style={styles.title}>
-  {movie.title}
+  {today.title}
   </Text>
 
 <View style={styles.others}>
-  {movie.release_date}
+  {today.release_date}
   </View>
 
 </View>
@@ -122,7 +133,7 @@ const onClick  = () => {
      
      )}
      
-     {count===1 && movieUpdate.map((movieup, index) => 
+     {count===1 && weekTrending.map((week, index) => 
            <TouchableOpacity  style={styles.buttonStyle} >
            <View style={styles.imagecontainer}>
            
@@ -130,8 +141,8 @@ const onClick  = () => {
                  
                <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
                  navigation.navigate('Tvdetails',{ 
-                   id:`${movieup.id}`,
-         
+                   id:`${week.id}`,
+                  
                    }) 
                    } } >
             
@@ -139,7 +150,7 @@ const onClick  = () => {
        
                    <Image
                       style={{flex:1, height:null, width:150,}}
-               source={{uri: getPostURL(movieup.poster_path)}} >
+               source={{uri: getPostURL(week.poster_path)}} >
              </Image>
        
        
@@ -148,11 +159,11 @@ const onClick  = () => {
              <View style={styles.button}>
        
        <Text style={styles.title}>
-         {movieup.title}
+         {week.title}
          </Text>
        
        <View style={styles.others}>
-         {movieup.release_date}
+         {week.release_date}
          </View>
        
        </View>
@@ -181,18 +192,14 @@ const onClick  = () => {
 
        
      </SafeAreaView>
-
-     </Box>
-
      </View>
       
-
 
   )
 }
 
 
-export default MovieCard
+export default TvTrending
 
 const styles = StyleSheet.create({
 

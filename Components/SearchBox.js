@@ -18,8 +18,8 @@ const SearchBox = () => {
     <View  style={styles.full}>
 
 
-<TextInput  style={{ height: 30, borderColor: 'black', borderWidth: 2,width:300, textAlign:'center',backgroundColor:'white',borderRadius:5, }}
-        placeholder='Type to search movies..'
+<TextInput  style={{ height: 30, borderColor: '#fdf102', borderWidth: 2,width:300, textAlign:'center',backgroundColor:'#242526',borderRadius:5,textDecorationColor:'#fdf102' }}
+        placeholder='Type to search movies..' placeholderTextColor={'#a79f069a'}
 
     onChangeText={(val) => setSearchValue(val) } onSubmitEditing={() => navigation.navigate('Searching Details')} >
         
@@ -37,7 +37,7 @@ export default SearchBox
 const styles = StyleSheet.create({
 
   full:{
-    backgroundColor:'orange',
+    backgroundColor:'#242526',
     width:'100%',
     padding:30
   }
