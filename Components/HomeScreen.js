@@ -2,10 +2,16 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import MovieCard from './MovieCard';
 import TopRated from './TopRated';
 import NowPlay from './NowPlay';
+
+import { Badge,  } from "@react-native-material/core";
+
+import {WidthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import { Stack, Avatar } from "@react-native-material/core";
 import { Surface, FAB } from "@react-native-material/core";
 import { useNavigation } from '@react-navigation/native';
 import { Button } from "@react-native-material/core";
+
 import SearchBox from './SearchBox';
 import { signOut, getAuth } from 'firebase/auth';
 import Trending from './Trending'
@@ -32,6 +38,7 @@ const HomeScreen = ({ route }) => {
   return (
 
 
+
     <View style={styles.container}>
  <HStack m={4} spacing={8}>
     <View style={{ width: 150, height: 40,  }} > <h1 style={styles.text}>TMDB MOVIE APP </h1> </View>
@@ -46,6 +53,7 @@ const HomeScreen = ({ route }) => {
 
       
       <SearchBox />
+
 
       
 
@@ -76,9 +84,11 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
 
-  container: {
-    backgroundColor: '#242526',
-  },
+
+  container:{
+    backgroundColor:'#242526',
+    width:'fit-content',
+
 
   text: {
     color: '#fdf102',

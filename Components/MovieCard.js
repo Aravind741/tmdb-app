@@ -2,7 +2,7 @@ import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,B
 import React, { useContext,useState,useEffect } from 'react'
 import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
-import { HStack,Spacer } from "@react-native-material/core";
+import { HStack,Box } from "@react-native-material/core";
 
 import axios from 'axios';
 
@@ -59,6 +59,8 @@ const onClick  = () => {
     }}  onPress={onClick1} /></View>
     <View style={{ width: 80, height: 40, }} ></View>
   </HStack>
+
+    <Box  m={4} >
 
     <SafeAreaView>
 {/*Here we will return the view when state is true 
@@ -179,8 +181,12 @@ const onClick  = () => {
 
        
      </SafeAreaView>
+
+     </Box>
+
      </View>
       
+
 
   )
 }
