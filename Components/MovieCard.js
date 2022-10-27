@@ -2,7 +2,7 @@ import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity }
 import React, { useContext } from 'react'
 import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
-import { HStack,Spacer } from "@react-native-material/core";
+import { HStack,Box } from "@react-native-material/core";
 
 
 const MovieCard = () => {
@@ -24,6 +24,8 @@ const getPostURL = (posterpath) => {
 
 
   return (
+
+    <Box  m={4} >
 
     <SafeAreaView>
 
@@ -84,7 +86,7 @@ const getPostURL = (posterpath) => {
        </ScrollView>
      </View>
      </SafeAreaView>
-      
+     </Box>
 
   )
 }

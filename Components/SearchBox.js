@@ -12,6 +12,8 @@ const SearchBox = () => {
 
   return (
 
+
+    <HStack m={0} spacing={10}>
     <SafeAreaView>
     <View  style={styles.full}>
 
@@ -26,7 +28,7 @@ const SearchBox = () => {
 
 </View>
 </SafeAreaView> 
-
+</HStack>
   )
 }
 
