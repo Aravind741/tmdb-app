@@ -1,8 +1,8 @@
-import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,Button } from 'react-native'
+import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity} from 'react-native'
 import React, { useContext,useState,useEffect } from 'react'
 import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
-import { HStack,Spacer } from "@react-native-material/core";
+import { Flex, HStack,Spacer,Box,Button } from "@react-native-material/core";
 
 import axios from 'axios';
 
@@ -61,17 +61,20 @@ const onClick  = () => {
   return (
    < View>
     <HStack m={4} spacing={6}>
-    <View style={{ width: 130, height: 40,  }} > <h1 style={styles.text}>Trending Tv shows</h1> </View>
-    <View style={{ width: 80, height: 40, }} ><Button title="Today" style={{
+    <View style={{ width: 130, height: 40,  marginHorizontal:4  }} > <h1 style={styles.text}>Trending Tv shows</h1> </View>
+    <View style={{ width: 80, height: 40, }} ><Button title="Today" variant="text" color='#fdf102' style={{
        textAlign: "center", fontSize:15
     }}  onPress={onClick} />
     
-    </View> 
-    <View style={{ width: 90, height: 40, }}> <Button title="thisWeek" style={{
+    </View>  
+    <View style={{ width: 90, height: 40, }}> <Button title="thisWeek" variant="text" color='#fdf102' style={{
        textAlign: "center", fontSize:15
     }}  onPress={onClick1} /></View>
     <View style={{ width: 80, height: 40, }} ></View>
   </HStack>
+
+  <Flex fill>
+  <Box  m={4} style={{alignContent:'flex-end'}}  >
 
     <SafeAreaView>
 {/*Here we will return the view when state is true 
@@ -79,7 +82,7 @@ const onClick  = () => {
       
 
 
-    <View style={{height:300, width:600,}}>
+    <View style={{height:300}}>
   
    
    <ScrollView horizontal={true} >
@@ -192,6 +195,8 @@ const onClick  = () => {
 
        
      </SafeAreaView>
+     </Box>
+     </Flex>
      </View>
       
 
@@ -215,15 +220,17 @@ const styles = StyleSheet.create({
       imagecontainer: {
         height:"100%",
          width:"100%",
-         
+        borderRadius:10
       
          
       },
       buttonStyle: {
-        marginLeft:2,
-        borderWidth: 1,
-        borderColor: '#141414',
+       
+        borderWidth: 2,
+        borderColor: '#fdf102',
         width: 150,
+        borderRadius:10,
+        marginHorizontal:4
       },
 
       button: {
@@ -252,7 +259,8 @@ const styles = StyleSheet.create({
       },
       text: {
         color: 'white',
-        fontSize:15
+        fontSize:15,
+        marginHorizontal:4
       }
     
 

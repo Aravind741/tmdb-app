@@ -12,7 +12,7 @@ const SearchScreen = () => {
   return (
    
   
-<View>
+<View style={styles.container}>
 <SearchBox  />
 
 
@@ -33,4 +33,15 @@ export default SearchScreen
 
 const styles = StyleSheet.create({
   
+  container:{
+    backgroundColor:'#242526',
+   
+    alignContent:'flex-end'
+
+  },
+  text: {
+    color: '#fdf102',
+    fontSize:15,
+    alignItems:'center'
+  },
 })

@@ -2,7 +2,7 @@ import { StyleSheet, Text,Image, View,SafeAreaView,ScrollView,TouchableOpacity,T
 import React,{useContext} from 'react'
 import { AppContext } from '../App';
 import { useNavigation } from '@react-navigation/native';
-import { HStack, } from "@react-native-material/core";
+import { HStack,Flex,Box } from "@react-native-material/core";
 
 
 const NowPlay = () => {
@@ -22,9 +22,14 @@ const NowPlay = () => {
 
 
   return (
-
+    <View>
+    <HStack m={4} spacing={6}>
+    <View style={{ width: 120, height: 40,   marginHorizontal:4 }} > <h1 style={styles.text}>Now Playing</h1> </View>
+    </HStack>
+<Flex fill>
+<Box  m={4} style={{alignContent:'flex-end'}}  >
     <SafeAreaView>
-   <View style={{height:300, width:600,}}>
+   <View style={{height:300,}}>
    
    <ScrollView horizontal={true} >
 
@@ -71,6 +76,7 @@ const NowPlay = () => {
 
 
 
+
 </TouchableOpacity>
      </ScrollView>
      
@@ -89,7 +95,9 @@ const NowPlay = () => {
      </View>
     
      </SafeAreaView>
-      
+     </Box>
+     </Flex>
+     </View>
 
   )
 }
@@ -108,17 +116,19 @@ const styles = StyleSheet.create({
       
       },
       imagecontainer: {
-        height:300,
-        width:600,
-    
+        height:"100%",
+         width:"100%",
+        borderRadius:10
+      
          
       },
-
       buttonStyle: {
-        marginLeft:2,
-        borderWidth: 1,
-        borderColor: '#141414',
+       
+        borderWidth: 2,
+        borderColor: '#fdf102',
         width: 150,
+        borderRadius:10,
+        marginHorizontal:4
       },
       button: {
         alignItems: "center",
@@ -143,6 +153,12 @@ const styles = StyleSheet.create({
         borderRadius:10,
         width:40,
         textAlign:'center',
-      }
+      },
+      text: {
+        color: 'white',
+            fontSize:15,
+            marginHorizontal:4,
+        alignItems:'center'
+      },
 
 })
