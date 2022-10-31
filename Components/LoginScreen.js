@@ -3,6 +3,10 @@ import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpaci
 import {  getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import firebase from '../datastore/Firebase';
 import { useNavigation } from '@react-navigation/native';
+import { IconButton } from "@react-native-material/core";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+
+
 
 
 // import { KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native-web'
@@ -55,13 +59,24 @@ useEffect(() => {
             style={styles.container}
             behavior="padding">
 
-            <View style={styles.inputContainer}>
+<IconButton
+      icon={props => <Icon name="account" {...props} />}
+      color="black"
+      style={{backgroundColor:'yellow',padding:20}}
+    />
 
+       <h1 style={{color:'white',fontFamily:'sans-serif'}}>Login</h1>
+
+
+
+            <View style={styles.inputContainer}>
+               
                 <TextInput
                     placeholder="Email"
                     value={email}
                     onChangeText = {text => setEmail(text) }
                     style={styles.input}
+                    
                 />
 
 
@@ -86,7 +101,7 @@ useEffect(() => {
 
 
                 <TouchableOpacity
-                 style={[styles.button, styles.buttonOutline]}
+                 style={[styles.button]}
                  onPress= {handleSignUp}  
                 >
                     <Text style={styles.buttonOutlineText}> Register</Text>
@@ -101,12 +116,15 @@ export default LoginScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#242526',
         alignItems: 'center',
         justifyContent: 'center',
     },
     inputContainer: {
-        width: '80%'
+        width: '80%',
+        margin:20,
+        
+        
     },
 
     input: {
@@ -115,7 +133,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
-        marginTop: 5
+        margin:20
 
 
 
@@ -124,16 +142,18 @@ const styles = StyleSheet.create({
         width: '60%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 40,
+       
+        
 
     },
     button: {
 
-        backgroundColor: '#0782F9',
-        width: '100%',
-        padding: 15,
+        backgroundColor:'yellow',
+        width:'50%',
+        padding: 10,
         borderRadius: 10,
         alignItems: 'center',
+        margin:10,
     },
     buttonOutline: {
 
@@ -143,13 +163,14 @@ const styles = StyleSheet.create({
         borderWidth: '2'
     },
     buttonText: {
-        color: 'white',
+        color: 'black',
         fontWeight: '700',
         fontSize: 16,
+        
     },
     buttonOutlineText: {
 
-        color: '#0782F9',
+        color: 'black',
         fontWeight: '700',
         fontSize: 16,
     },
