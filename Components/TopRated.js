@@ -144,11 +144,11 @@ const onClick1  = () => {
              <View style={styles.button}>
        
        <Text style={styles.title}>
-         {topmov.title}
+         {topmov.name}
          </Text>
        
        <View style={styles.others}>
-         {topmov.release_date}
+         {topmov.first_air_date}
          </View>
        
        </View>

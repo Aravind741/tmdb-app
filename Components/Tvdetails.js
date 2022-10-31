@@ -51,7 +51,7 @@ console.log('HI',id)
     
     
             <Image
-               style={{flex:1, height:null, width:300,margin:60,}}
+               style={{flex:1,flexDirection:'row',}}
         source={{uri: getPostURL(movieDetails.poster_path)}} >
       </Image>
     
@@ -69,15 +69,15 @@ console.log('HI',id)
         <Surface
       elevation={6}
       category="medium"
-     style={{backgroundColor:'orange',padding:30}}
+     style={{backgroundColor:'yellow',padding:30}}
     >
       
         <Text style={styles.title}>
-          {movieDetails.title}
+          {movieDetails.name}
           </Text>
 
         <View style={styles.others}>
-        {movieDetails.release_date}
+        {movieDetails.first_air_date}
           </View>
 
 <br />
@@ -99,6 +99,14 @@ console.log('HI',id)
         </View>
 <br />
         
+        <View>
+        <Text  style={{fontWeight:'bold',fontFamily:'sans-serif'}}> Status:</Text>{movieDetails.status}
+        </View>
+<br />
+
+        <View>
+        <Text  style={{fontWeight:'bold',fontFamily:'sans-serif'}}> Rating:</Text>{movieDetails.vote_average}
+        </View>
 
       </Surface>
         </View>
@@ -131,16 +139,16 @@ const styles = StyleSheet.create({
 
   },
   imagecontainer: {
-    height:500,
-     width:500,
-  
+    height:400,
+     width:300,
+     margin:'auto',
+     padding:20,
      
   },
   
   button: {
     alignItems: "center",
-
-    backgroundColor: 'orange',
+    backgroundColor: '#242526',
     color:'black',
     padding:40,
 

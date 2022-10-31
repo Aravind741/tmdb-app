@@ -42,7 +42,7 @@ const HomeScreen = ({ route }) => {
      
   <Flex style={{flexDirection:'row-reverse'}}>
  <HStack m={4} spacing={8} style={{alignContent:'space-around'}}  >
-    <View style={{ width: 150,   }} > <h1 style={styles.text}>TMDB MOVIE APP </h1> </View>
+    <View > <h1 style={styles.text}>TMDB MOVIE APP </h1> </View>
 
    
     <View style={{ justifyContent:'flex-start', borderRadius:10}} ><Button title="logout" color='#fdf102' variant="text"  compact style={{
@@ -94,10 +94,13 @@ const styles = StyleSheet.create({
 
   },
   text: {
-    color: 'white',
+    color: 'black',
         fontSize:15,
-        marginHorizontal:4,
-    alignItems:'center'
+        marginRight:50,
+    alignItems:'center',
+    backgroundColor:'yellow',
+    borderRadius:20,
+    padding:10,
   },
   
 

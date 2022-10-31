@@ -116,11 +116,11 @@ const onClick  = () => {
       <View style={styles.button}>
 
 <Text style={styles.title}>
-  {today.title}
+  {today.name}
   </Text>
 
 <View style={styles.others}>
-  {today.release_date}
+  {today.first_air_date}
   </View>
 
 </View>
@@ -162,11 +162,11 @@ const onClick  = () => {
              <View style={styles.button}>
        
        <Text style={styles.title}>
-         {week.title}
+         {week.name}
          </Text>
        
        <View style={styles.others}>
-         {week.release_date}
+         {week.first_air_date}
          </View>
        
        </View>
