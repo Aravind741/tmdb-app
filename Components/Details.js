@@ -14,13 +14,13 @@ const Details = ({route}) => {
 
   const navigation = useNavigation()
 
-  const {id} = route.params;
+  const {id,movie} = route.params;
 
   const [movieDetails, setMovieDetails] = useState([]);
 
 console.log('HI',id)
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US`)
+    axios.get(`https://api.themoviedb.org/3/${movie}/${id}?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US`)
     .then((response)=>{setMovieDetails(response.data)})
 
     .catch(err =>{console.log(err)})

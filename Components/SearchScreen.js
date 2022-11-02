@@ -3,10 +3,10 @@ import React from 'react'
 
 import SearchBox from './SearchBox';
 import SearchingMovieList from './SearchingMovieList';
-
+import { useNavigation } from '@react-navigation/native';
 
 const SearchScreen = () => {
-
+  
 
 
   return (

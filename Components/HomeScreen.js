@@ -2,10 +2,10 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import MovieCard from './MovieCard';
 import TopRated from './TopRated';
 import NowPlay from './NowPlay';
+import Popular from './Popular';
+import { Badge, } from "@react-native-material/core";
 
-import { Badge,  } from "@react-native-material/core";
-
-import {WidthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { WidthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { Stack, Avatar } from "@react-native-material/core";
 import { Surface, FAB } from "@react-native-material/core";
@@ -17,6 +17,8 @@ import { signOut, getAuth } from 'firebase/auth';
 import Trending from './Trending'
 import TvTrending from './TvTrending';
 import { HStack, Flex, Box, Spacer } from "@react-native-material/core";
+import BackdropPath from './BackdropPath';
+
 
 
 const HomeScreen = ({ route }) => {
@@ -39,37 +41,48 @@ const HomeScreen = ({ route }) => {
 
 
     <View style={styles.container}>
-     
-  <Flex style={{flexDirection:'row-reverse'}}>
- <HStack m={4} spacing={8} style={{alignContent:'space-around'}}  >
-    <View > <h1 style={styles.text}>TMDB MOVIE APP </h1> </View>
 
-   
-    <View style={{ justifyContent:'flex-start', borderRadius:10}} ><Button title="logout" color='#fdf102' variant="text"  compact style={{
-       textAlign: "center", fontSize:11, marginEnd: 4 , borderRadius:10
-    }}    onPress={handlelogout} />
-    
-    </View>
-  </HStack>
-</Flex>
+      <Flex style={{ flexDirection: 'row-reverse' }}>
+        <HStack m={4} spacing={8} style={{ alignContent: 'space-around' }}  >
+        
+          <View > <h1 style={styles.text}>TMDB MOVIE APP </h1> </View>
+
+
+          <View style={{ justifyContent: 'flex-start', borderRadius: 10 }} ><Button title="logout" color='#fdf102' variant="text" compact style={{
+            textAlign: "center", fontSize: 11, marginEnd: 4, borderRadius: 10
+          }} onPress={handlelogout} />
+
+          </View>
+        </HStack>
       
-<SearchBox />
-
-
+      </Flex>
       
+        <BackdropPath />
+      
+       
+      <SearchBox />
 
-      <MovieCard />
+
+      <Popular />
+
+
+      <TopRated />
+
+
+
+
+<NowPlay />
 
 
       <Trending />
-      
+
       <TvTrending />
 
 
       <TopRated />
 
 
-      
+
 
       <NowPlay />
 
@@ -86,23 +99,23 @@ export default HomeScreen
 const styles = StyleSheet.create({
 
 
-  container:{
-    backgroundColor:'#242526',
-   
-    alignContent:'flex-end'
-  
+  container: {
+    backgroundColor: '#242526',
+
+    alignContent: 'flex-end'
+
 
   },
   text: {
     color: 'black',
-        fontSize:15,
-        marginRight:50,
-    alignItems:'center',
-    backgroundColor:'yellow',
-    borderRadius:20,
-    padding:10,
+    fontSize: 15,
+    marginRight: 50,
+    alignItems: 'center',
+    backgroundColor: 'yellow',
+    borderRadius: 20,
+    
   },
-  
+
 
 
 })
