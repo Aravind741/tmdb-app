@@ -4,27 +4,15 @@ import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
 import { HStack,Box,Flex , Button} from "@react-native-material/core";
 
-import axios from 'axios';
 
-const MovieCard = () => {
+const MovieCard = ({movies, movieUpdate,title,buttonTitle1,buttonTitle2,mov,tv}) => {
   const navigation = useNavigation()
 
-
-  const { movies, setMovies} =useContext(AppContext);   
-  const[movieUpdate,setMovieUpdate] = useState([]);
+ 
+  console.log('movieUpdate' ,movies)
+  console.log('movies' ,movies)
   const[count,setCount] = useState(0);
-
-
-  useEffect(()=> {
-    axios.get('https://api.themoviedb.org/3/tv/popular?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1')
-    
-    .then((response)=>{setMovieUpdate(response.data.results)})
-
-    .catch(err =>{console.log(err)})
-
-
- },[])
- console.log("list", movieUpdate)
+  const[change,setChange] = useState(0);
 
 const getPostURL = (posterpath) => {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
@@ -48,13 +36,13 @@ const onClick  = () => {
   return (
    < View>
     <HStack m={4} spacing={6}>
-    <View style={{ width: 80, height: 40, marginHorizontal:4,  }} > <h1 style={styles.text}>Popular </h1> </View>
-    <View style={{ width: 80, height: 40, }} ><Button title="movies" variant="text" color='#fdf102' style={{
+    <View style={{ width: 130, height: 40, marginHorizontal:4,  }} > <h1 style={styles.text}>{title} </h1> </View>
+    <View style={{ width: 80, height: 40, }} ><Button title={buttonTitle1} variant="text" color='#fdf102' style={{
        textAlign: "center", fontSize:15
     }}  onPress={onClick} />
     
     </View> 
-    <View style={{ width: 80, height: 40, }}> <Button title="onTV" variant="text" color='#fdf102' style={{
+    <View style={{ width: 80, height: 40, }}> <Button title={buttonTitle2} variant="text" color='#fdf102' style={{
        textAlign: "center", fontSize:15, borderColor:'#fdf102'
     }}  onPress={onClick1} /></View>
     <View style={{ width: 80, height: 40, }} ></View>
@@ -83,11 +71,12 @@ const onClick  = () => {
         <ScrollView horizontal={true}>
           
         <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
-          navigation.navigate('Details',{ 
+          {count===0 && navigation.navigate('Details',{ 
             id:`${movie.id}`,
+            movie:`${mov}`
         
             }) 
-            } } >
+         } } } >
      
         
 
@@ -129,12 +118,12 @@ const onClick  = () => {
                <ScrollView horizontal={true}>
                  
                <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
-                 navigation.navigate('Tvdetails',{ 
-                   id:`${movieup.id}`,
-         
-                   }) 
-                   } } >
-            
+          {count===1 && navigation.navigate('Details',{ 
+            id:`${movieup.id}`,
+            movie:`${tv}`
+        
+            }) 
+         } } } >
                
        
                    <Image

@@ -5,196 +5,24 @@ import { useNavigation } from '@react-navigation/native';
 import { Flex, HStack,Spacer , Box,Button} from "@react-native-material/core";
 
 import axios from 'axios';
+import MovieCard from './MovieCard';
 
 const Trending = () => {
   const navigation = useNavigation()
 
 
-  const { movies, setMovies} =useContext(AppContext);   
-  const[todayTrending,setTodayTrending] = useState([]);
-  const[weekTrending,setWeekTrending] = useState([]);
-
-  const[count,setCount] = useState(0);
-
-
-  useEffect(()=> {
-    axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=de93eb585060bf0531bc637876b11f0e')
-    
-    .then((response)=>{setTodayTrending(response.data.results)})
-
-    .catch(err =>{console.log(err)})
-
-
- },[])
- console.log("list", todayTrending)
-
- useEffect(()=> {
-    axios.get('https://api.themoviedb.org/3/trending/movie/week?api_key=de93eb585060bf0531bc637876b11f0e')
-    
-    .then((response)=>{setWeekTrending(response.data.results)})
-
-    .catch(err =>{console.log(err)})
-
-
- },[])
- console.log("list", weekTrending)
-
-const getPostURL = (posterpath) => {
-    return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
-}
-
-const onClick1  = () => {
- setCount(count-count+1)
-console.log("onclick", count)
+  const {todayMovies,weekMovies} =useContext(AppContext);   
  
-}
-const onClick  = () => {
-  setCount(count-count+0)
- console.log("onclick", count)
+  const title='Trending Movies';
+  const buttonTitle1='Today';
+  const buttonTitle2='thisWeek';
+  const mov = 'movie';
+  const tv = 'movie'
   
- }
-
-
-
-
-
+console.log("TodayMovies",todayMovies)
   return (
    < View>
-    <HStack m={4} spacing={6}>
-    <View style={{ width: 120, height: 40,   marginHorizontal:4 }} > <h1 style={styles.text}>Trending Movies</h1> </View>
-    <View style={{ width: 80, height: 40, }} ><Button title="Today" variant="text" color='#fdf102' style={{
-       textAlign: "center", fontSize:15
-    }}  onPress={onClick} />
-    
-    </View> 
-    <View style={{ width: 90, height: 40, }}> <Button title="thisWeek" variant="text" color='#fdf102' style={{
-       textAlign: "center", fontSize:15
-    }}  onPress={onClick1} /></View>
-    <View style={{ width: 80, height: 40, }} ></View>
-  </HStack>
-  <Flex fill>
-  <Box  m={4} style={{alignContent:'flex-end'}}  >
-    <SafeAreaView>
-{/*Here we will return the view when state is true 
-        and will return false if state is false*/}
-      
-     
-
-    <View style={{height:300}}>
-  
-   
-   <ScrollView horizontal={true} >
-
-   <HStack m={10} spacing={10}>
-    
-<>
-    {count===0 && todayTrending.map((today, index) => 
-    <TouchableOpacity  style={styles.buttonStyle} >
-    <View style={styles.imagecontainer}>
-    
-        <ScrollView horizontal={true}>
-          
-        <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
-          navigation.navigate('Details',{ 
-            id:`${today.id}`,
-           
-            }) 
-            } } >
-     
-        
-
-            <Image
-               style={{flex:1, height:null, width:150,borderRadius:10}}
-        source={{uri: getPostURL(today.poster_path)}} >
-      </Image>
-
-
-
-     
-      <View style={styles.button}>
-
-<Text style={styles.title}>
-  {today.title}
-  </Text>
-
-<View style={styles.others}>
-  {today.release_date}
-  </View>
-
-</View>
-
-
-</TouchableOpacity>
-     </ScrollView>
-     
-     </View>
-        
-        </TouchableOpacity>
-
-     
-     )}
-     
-     {count===1 && weekTrending.map((week, index) => 
-           <TouchableOpacity  style={styles.buttonStyle} >
-           <View style={styles.imagecontainer}>
-           
-               <ScrollView horizontal={true}>
-                 
-               <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
-                 navigation.navigate('Details',{ 
-                   id:`${week.id}`,
-                  
-                   }) 
-                   } } >
-            
-               
-       
-                   <Image
-                      style={{flex:1, height:null, width:150,borderRadius:10}}
-               source={{uri: getPostURL(week.poster_path)}} >
-             </Image>
-       
-       
-       
-            
-             <View style={styles.button}>
-       
-       <Text style={styles.title}>
-         {week.title}
-         </Text>
-       
-       <View style={styles.others}>
-         {week.release_date}
-         </View>
-       
-       </View>
-       
-       
-       </TouchableOpacity>
-            </ScrollView>
-            
-            </View>
-               
-               </TouchableOpacity>
-       
-            
-            )}
-
-
-        </>
-        
-          </HStack>
-
-       </ScrollView>
-     </View> 
-       
-
-      
-
-       
-     </SafeAreaView>
-     </Box>
-     </Flex>
+    <MovieCard movies={todayMovies} movieUpdate={weekMovies} title={title} buttonTitle1={buttonTitle1} buttonTitle2={buttonTitle2} mov={mov} tv={tv} />
      </View>
       
 
@@ -206,61 +34,6 @@ export default Trending
 
 const styles = StyleSheet.create({
 
-
-    container: {
-        flex: 1,
-      paddingTop: 50,
-      height:400,
-      width:500,
-
-
-      },
-      imagecontainer: {
-        height:"100%",
-         width:"100%",
-        borderRadius:10
-      
-         
-      },
-      buttonStyle: {
-       
-        borderWidth: 2,
-        borderColor: '#fdf102',
-        width: 150,
-        borderRadius:10,
-        marginHorizontal:4
-      },
-
-      button: {
-        alignItems: "center",
-        backgroundColor: "#051E34",
-        color:'white',
-        padding:10,
-      },
-
-      title:{
-        textAlign:'center',
-        color:'white',
-        fontFamily:'verdana',
-        
-
-      },
-      others:{
-        fontSize:15,
-        margin:10,
-      },
-      rate:{
-        backgroundColor:'green',
-        borderRadius:10,
-        width:40,
-        textAlign:'center',
-      },
-      text: {
-        color: 'white',
-        fontSize:15,
-        marginHorizontal:4
-      }
-    
 
 })
 

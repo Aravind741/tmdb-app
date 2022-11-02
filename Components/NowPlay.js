@@ -3,100 +3,22 @@ import React,{useContext} from 'react'
 import { AppContext } from '../App';
 import { useNavigation } from '@react-navigation/native';
 import { HStack,Flex,Box } from "@react-native-material/core";
+import MovieCard from './MovieCard';
 
 
 const NowPlay = () => {
 
+  const title="Now Playing";
+  const { nows} =useContext(AppContext);  
+  const mov = 'movie';
+  const tv = 'tv'
  
-  const { nows, setNows} =useContext(AppContext);  
-
-  const navigation = useNavigation()
-
-
- const getPostURL = (posterpath) => {
-  return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
-}
-
-
 
 
 
   return (
     <View>
-    <HStack m={4} spacing={6}>
-    <View style={{ width: 120, height: 40,   marginHorizontal:4 }} > <h1 style={styles.text}>Now Playing</h1> </View>
-    </HStack>
-<Flex fill>
-<Box  m={4} style={{alignContent:'flex-end'}}  >
-    <SafeAreaView>
-   <View style={{height:300,}}>
-   
-   <ScrollView horizontal={true} >
-
-   <HStack m={0} spacing={10}>
-
-    {nows.map((now, index) => 
-    <TouchableOpacity  style={styles.buttonStyle}>
-    <View style={styles.imagecontainer}>
-    
-        <ScrollView horizontal={true} >
-        <TouchableOpacity  style={styles.buttonStyle} onPress={() => {
-          navigation.navigate('Details',{ 
-            id:`${now.id}`
-            }) 
-            } }>
-     
-            <Image
-               style={{flex:1, height:null, width:150}}
-        source={{uri:getPostURL(now.poster_path)}} 
-      />
-
-
-
-
-<View style={styles.button}>
-
-<Text style={styles.title}> 
-  {now.title}
-  </Text>
-
-  <View style={styles.others}>
-{now.release_date}
-</View>
-
-
-
-
-</View>
-
-
-
-
-
-
-
-
-
-</TouchableOpacity>
-     </ScrollView>
-     
-     </View>
-
-       
-
-        </TouchableOpacity>
-
-     
-     )}
-
-</HStack>
-
-       </ScrollView>
-     </View>
-    
-     </SafeAreaView>
-     </Box>
-     </Flex>
+    <MovieCard  movies={nows}  title={title}   mov={mov} tv={tv}/>
      </View>
 
   )
