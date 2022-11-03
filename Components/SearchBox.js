@@ -2,7 +2,8 @@ import { StyleSheet, View, SafeAreaView, TextInput } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../App'
-import { HStack, Flex, Box, Button } from '@react-native-material/core';
+import { Stack, Flex, Box, IconButton } from '@react-native-material/core';
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 
 const SearchBox = (values) => {
@@ -32,7 +33,8 @@ const SearchBox = (values) => {
             onChangeText={(val) => setSearchValue(val)} onSubmitEditing={() => navigation.navigate('Searching Details'
 
             )} >
-
+   
+          
           </TextInput>
 
         </Flex>

@@ -11,121 +11,121 @@ const SearchingMovieList = () => {
     const getPostURL = (posterpath) => {
         return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`
     }
-
+    const movie1 = 'movie';
 
     return (
-      <SafeAreaView>
-
-
-      <View style={{height:300, width:600,}}>
+      <View style={styles.container}>
      
+  
      
-     <ScrollView horizontal={true} >
-  
-     <HStack m={0} spacing={10}>
-  
-      {movieList.map((mov, index) => 
-      <TouchableOpacity  style={styles.buttonStyle} >
-      <View style={styles.imagecontainer}>
-      
-          <ScrollView horizontal={true}>
-            
-          <TouchableOpacity  style={styles.buttonStyle}  onPress={() => {
-            navigation.navigate('Details',{ 
-              id:`${mov.id}`
-              }) 
-              } } >
-       
-          
-  
-              <Image
-                 style={{flex:1, height:null, width:150,}}
-          source={{uri: getPostURL(mov.poster_path)}} >
-        </Image>
-  
-  
-  
-       
-        <View style={styles.button}>
-  
-  <Text style={styles.title}>
-    {mov.title}
-    </Text>
-  
-  <View style={styles.others}>
-    {mov.release_date}
-    </View>
-  
-  </View>
-  
-  
-  </TouchableOpacity>
-       </ScrollView>
-       
-       </View>
-          
-          </TouchableOpacity>
-  
-       
-       )}
-            </HStack>
-  
-         </ScrollView>
-       </View>
-       </SafeAreaView>
+      <ScrollView 
+      contentContainerStyle={{
+         flexDirection:'row',
+         flexWrap:'wrap',
+         justifyContent:'space-evenly',
         
-    )
-}
-
-export default SearchingMovieList
-
-const styles = StyleSheet.create({
-
-    
-  container: {
-    flex: 1,
-      paddingTop: 50,
-      height:400,
-      width:500,
-      backgroundColor:'black',
-  },
-  imagecontainer: {
-    height:"100%",
-     width:"100%",
+        
+       
+      }}>
+      
+ 
+       {movieList.map((mov, index) => 
+       
      
+           <TouchableOpacity   onPress={() => {
+             navigation.navigate('Details',{ 
+               id:`${mov.id}`,
+               movie:`${movie1}`
+               }) 
+               } } >
+        
      
-  },
-  buttonStyle: {
-    marginLeft:2,
-    borderWidth: 1,
-    width: 150,
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#051E34",
-    color:'white',
-    padding:10,
-
-  },
-
-  title:{
-    textAlign:'center',
-    color:'white',
-    fontFamily:'verdana',
-    marginTop:15,
+       
+               <Image
+                  style={{ height:300,width:200,margin:'auto'}}
+           source={{uri: getPostURL(mov.poster_path)}} >
+         </Image>
+   
+      
+ 
+        
+         <View style={styles.button}>
+   
+   <Text style={styles.title}>
+     {mov.title}
+     </Text>
+   
+   <View style={styles.others}>
+     {mov.release_date}
+     </View>
     
-
-  },
-  others:{
-    fontSize:15,
-    margin:10,
-  },
-  rate:{
-    backgroundColor:'green',
-    borderRadius:10,
-    width:40,
-    textAlign:'center',
-  }
-
-})                                                                                      
-
+   </View>
+  
+   </TouchableOpacity>
+   
+    
+        
+       
+       
+        
+           
+           
+        
+        )}
+           
+          </ScrollView>
+        </View>
+      
+        
+     )
+ }
+ 
+ export default SearchingMovieList
+ 
+ const styles = StyleSheet.create({
+ 
+     
+   container: {
+    
+   },
+ 
+   buttonStyle: {
+     marginLeft:2,
+     borderWidth: 1,
+     width: 150,
+     
+   },
+   button: {
+     alignItems: "center",
+     backgroundColor: "#051E34",
+     color:'white',
+     padding:10,
+     width:200,
+     margin:'auto',
+ 
+   },
+ 
+   title:{
+     textAlign:'center',
+     color:'white',
+     fontFamily:'verdana',
+     marginTop:15,
+     
+ 
+   },
+   others:{
+     fontSize:15,
+     margin:10,
+   },
+   rate:{
+     backgroundColor:'green',
+     borderRadius:10,
+     width:40,
+     textAlign:'center',
+   },
+   
+  
+ 
+ })                                                                                      
+ 
+ 

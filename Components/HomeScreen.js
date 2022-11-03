@@ -79,12 +79,6 @@ const HomeScreen = ({ route }) => {
       <TvTrending />
 
 
-      <TopRated />
-
-
-
-
-      <NowPlay />
 
 
 
