@@ -8,6 +8,7 @@ import Tvdetails from './Components/Tvdetails'
 import SearchScreen from './Components/SearchScreen';
 import React, { useEffect, useState, createContext } from 'react'
 import axios from 'axios';
+import config from './config';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +37,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=de93eb585060bf0531bc637876b11f0e&with_genres=${genre}`)
+    axios.get(`${config.MAIN_URL}/trending/movie/day?api_key=${config.API_KEY}&with_genres=${genre}`)
 
       .then((response) => { setTodayMovies(response.data.results) })
 
@@ -47,7 +48,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=de93eb585060bf0531bc637876b11f0e&with_genres=${genre}`)
+    axios.get(`${config.MAIN_URL}/trending/movie/week?api_key=${config.API_KEY}&with_genres=${genre}`)
 
       .then((response) => { setweekMovies(response.data.results) })
 
@@ -56,7 +57,7 @@ function App() {
 
   }, [genre])
   useEffect(() => {
-    axios.get('https://api.themoviedb.org/3/trending/tv/day?api_key=de93eb585060bf0531bc637876b11f0e')
+    axios.get(`${config.MAIN_URL}/trending/tv/day?api_key=${config.API_KEY}`)
 
       .then((response) => { setTodayTrending(response.data.results) })
 
@@ -67,7 +68,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get('https://api.themoviedb.org/3/trending/tv/week?api_key=de93eb585060bf0531bc637876b11f0e')
+    axios.get(`${config.MAIN_URL}/trending/tv/week?api_key=${config.API_KEY}`)
 
       .then((response) => { setWeekTrending(response.data.results) })
 
@@ -78,7 +79,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1&with_genres=${tvGenre}`)
+    axios.get(`${config.MAIN_URL}/tv/top_rated?api_key=${config.API_KEY}&language=en-US&page=1&with_genres=${tvGenre}`)
 
       .then((response) => { setMovieTop(response.data.results) })
 
@@ -88,7 +89,7 @@ function App() {
   }, [tvGenre])
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1&with_genres=${tvGenre}`)
+    axios.get(`${config.MAIN_URL}/tv/popular?api_key=${config.API_KEY}&language=en-US&page=1&with_genres=${tvGenre}`)
 
       .then((response) => { setMovieUpdate(response.data.results) })
 
@@ -100,7 +101,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1&with_genres=${genre}`)
+    axios.get(`${config.MAIN_URL}/movie/popular?api_key=${config.API_KEY}&language=en-US&page=1&with_genres=${genre}`)
 
       .then((response) => { setMovies(response.data.results) })
 
@@ -112,7 +113,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1&with_genres=${genre}`)
+    axios.get(`${config.MAIN_URL}/movie/top_rated?api_key=${config.API_KEY}&language=en-US&page=1&with_genres=${genre}`)
 
       .then((response) => { setTop(response.data.results) })
       .catch(err => { console.log(err) })
@@ -127,7 +128,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=de93eb585060bf0531bc637876b11f0e&query=${searchValue}`)
+    axios.get(`${config.MAIN_URL}/search/movie?api_key=${config.API_KEY}&query=${searchValue}`)
 
       .then((response) => { setMovieList(response.data.results) })
 
@@ -139,7 +140,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=de93eb585060bf0531bc637876b11f0e&language=en-US&page=1&with_genres=${genre}`)
+    axios.get(`${config.MAIN_URL}/movie/now_playing?api_key=${config.API_KEY}&language=en-US&page=1&with_genres=${genre}`)
 
       .then((response) => { setNows(response.data.results) })
 

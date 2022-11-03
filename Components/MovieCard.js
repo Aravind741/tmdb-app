@@ -11,7 +11,7 @@ const MovieCard = ({movies, movieUpdate,title,buttonTitle1,buttonTitle2,mov,tv})
  
   console.log('movieUpdate' ,movies)
   console.log('movies' ,movies)
-  const[count,setCount] = useState(0);
+  const[count,setCount] = useState(0); 
   const[change,setChange] = useState(0);
 
 const getPostURL = (posterpath) => {
@@ -91,11 +91,11 @@ const onClick  = () => {
       <View style={styles.button}>
 
 <Text style={styles.title}>
-  {movie.title}
+  {movie.title||movie.name}
   </Text>
 
 <View style={styles.others}>
-  {movie.release_date}
+  {movie.release_date||movie.first_air_date}
   </View>
 
 </View>
@@ -137,11 +137,11 @@ const onClick  = () => {
              <View style={styles.button}>
        
        <Text style={styles.title}>
-         {movieup.name}
+         {movieup.name||movieup.title}
          </Text>
        
        <View style={styles.others}>
-         {movieup.first_air_date}
+         {movieup.first_air_date||movieup.release_date}
          </View>
        
        </View>
