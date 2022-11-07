@@ -1,8 +1,8 @@
-import { StyleSheet, Text, Image, View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../App'
 import { useNavigation } from '@react-navigation/native';
-import MovieCard from './MovieCard';
+import MovieCard from '../Components/MovieCard';
 
 const TvTrending = () => {
   const navigation = useNavigation()
@@ -16,7 +16,7 @@ const TvTrending = () => {
   const mov = 'tv';
   const tv = 'tv'
   return (
-    < View>
+    < View style={styles.container}>
       <MovieCard movies={todayTrending} movieUpdate={weekTrending} title={title} buttonTitle1={buttonTitle1} buttonTitle2={buttonTitle2} mov={mov} tv={tv} />
     </View>
 
@@ -28,7 +28,11 @@ const TvTrending = () => {
 export default TvTrending
 
 const styles = StyleSheet.create({
-
+  container:{
+    marginTop:60,
+      height:400,
+      width:400
+  }
 
 
 })

@@ -1,6 +1,6 @@
-import React ,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
-import {  getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import firebase from '../datastore/Firebase';
 import { useNavigation } from '@react-navigation/native';
 import { IconButton } from "@react-native-material/core";
@@ -18,65 +18,65 @@ const LoginScreen = () => {
 
     const navigation = useNavigation()
 
-useEffect(() => {
-   const unsubscribe = auth.onAuthStateChanged(user =>{
-        if (user) {
-            
-                navigation.navigate('Home',{
-            UID:`${user.email}`
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+
+                navigation.navigate('Home', {
+                    UID: `${user.email}`
+                })
+            }
         })
-        }
-    })
-    return  unsubscribe
-},[])
+        return unsubscribe
+    }, [])
 
 
     const auth = getAuth();
     const handleSignUp = () => {
- 
+
         createUserWithEmailAndPassword(auth, email, password)
-        .then(userCredentials => {
-            const user =userCredentials.user;
-            console.log(user.email);
-        })
-        .catch(error => alert(error.message))
+            .then(userCredentials => {
+                const user = userCredentials.user;
+                console.log(user.email);
+            })
+            .catch(error => alert(error.message))
     }
     const handleLogin = () => {
         signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    
-    const user = userCredential.user;
-    console.log('Login succes',user.email);
-    
-  })
-  .catch(error => alert(error.message))
+            .then((userCredential) => {
+
+                const user = userCredential.user;
+                console.log('Login succes', user.email);
+
+            })
+            .catch(error => alert(error.message))
 
     }
-   
+
 
     return (
         <KeyboardAvoidingView
             style={styles.container}
             behavior="padding">
 
-<IconButton
-      icon={props => <Icon name="account" {...props} />}
-      color="black"
-      style={{backgroundColor:'yellow',padding:20}}
-    />
+            <IconButton
+                icon={props => <Icon name="account" {...props} />}
+                color="black"
+                style={{ backgroundColor: 'yellow', padding: 20 }}
+            />
 
-       <h1 style={{color:'white',fontFamily:'sans-serif'}}>Login</h1>
+            <Text>Login</Text>
 
 
 
             <View style={styles.inputContainer}>
-               
+
                 <TextInput
                     placeholder="Email"
                     value={email}
-                    onChangeText = {text => setEmail(text) }
+                    onChangeText={text => setEmail(text)}
                     style={styles.input}
-                    
+
                 />
 
 
@@ -84,7 +84,7 @@ useEffect(() => {
                 <TextInput
                     placeholder="Password"
                     value={password}
-                    onChangeText = {text => setPassword(text)}
+                    onChangeText={text => setPassword(text)}
                     style={styles.input}
                     secureTextEntry
                 />
@@ -96,15 +96,15 @@ useEffect(() => {
                 <TouchableOpacity onPress={handleLogin}
                     style={styles.button}
                 >
-                    <Text style={styles.buttonText}> Login</Text>
+                    <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
 
 
                 <TouchableOpacity
-                 style={[styles.button]}
-                 onPress= {handleSignUp}  
+                    style={[styles.button]}
+                    onPress={handleSignUp}
                 >
-                    <Text style={styles.buttonOutlineText}> Register</Text>
+                    <Text style={styles.buttonOutlineText}>Register</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
@@ -122,9 +122,9 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         width: '80%',
-        margin:20,
-        
-        
+        margin: 20,
+
+
     },
 
     input: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
-        margin:20
+        margin: 20
 
 
 
@@ -142,18 +142,18 @@ const styles = StyleSheet.create({
         width: '60%',
         alignItems: 'center',
         justifyContent: 'center',
-       
-        
+
+
 
     },
     button: {
 
-        backgroundColor:'yellow',
-        width:'50%',
+        backgroundColor: 'yellow',
+        width: '50%',
         padding: 10,
         borderRadius: 10,
         alignItems: 'center',
-        margin:10,
+        margin: 10,
     },
     buttonOutline: {
 
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: '700',
         fontSize: 16,
-        
+
     },
     buttonOutlineText: {
 

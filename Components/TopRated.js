@@ -1,8 +1,8 @@
-import { StyleSheet, Text, Image, View, SafeAreaView, ScrollView, TouchableOpacity, TouchableHighlight } from 'react-native'
-import React, { useContext, useState, useEffect } from 'react'
+import { StyleSheet, View } from 'react-native'
+import React, { useContext } from 'react'
 import { AppContext } from '../App';
 
-import MovieCard from './MovieCard';
+import MovieCard from '../Components/MovieCard';
 
 const TopRated = () => {
 
@@ -15,8 +15,8 @@ const TopRated = () => {
   const tv = 'tv'
   return (
 
-    <View>
-      <MovieCard movies={top} movieUpdate={movieTop} title={title} buttonTitle1={buttonTitle1} buttonTitle2={buttonTitle2}  mov={mov} tv={tv} />
+    <View style={styles.container}>
+      <MovieCard movies={top} movieUpdate={movieTop} title={title} buttonTitle1={buttonTitle1} buttonTitle2={buttonTitle2} mov={mov} tv={tv} />
     </View>
 
   )
@@ -26,7 +26,11 @@ const TopRated = () => {
 export default TopRated
 
 const styles = StyleSheet.create({
-
+  container:{
+    marginTop:60,
+      height:300,
+      width:400
+  }
 
 
 })
