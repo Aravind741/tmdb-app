@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Components/HomeScreen'
 import LoginScreen from './Components/LoginScreen';
 import Details from './Components/Details';
-import Tvdetails from './Components/Tvdetails'
 import SearchScreen from './Components/SearchScreen';
 import React, { useEffect, useState, createContext } from 'react'
 import axios from 'axios';
@@ -33,7 +32,7 @@ function App() {
   const [genre, setGenre] = useState([]);
   const [tvGenre, setTvGenre] = useState([]);
 
- console.log("starting", genre)
+
 
 
   useEffect(() => {
@@ -97,7 +96,7 @@ function App() {
 
 
   }, [tvGenre])
-  console.log("list", movieUpdate)
+ 
 
 
   useEffect(() => {
@@ -166,7 +165,7 @@ function App() {
           <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
           <Stack.Screen name="Searching Details" component={SearchScreen} />
           <Stack.Screen name="Details" component={Details} />
-          <Stack.Screen name="Tvdetails" component={Tvdetails} />
+          
 
 
         </Stack.Navigator>

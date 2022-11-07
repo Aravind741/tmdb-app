@@ -1,15 +1,15 @@
-import { StyleSheet, View, SafeAreaView, TextInput,ScrollView } from 'react-native'
+import { StyleSheet, View, SafeAreaView, Text,ScrollView } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../App'
-import { HStack, Flex, Box, Button } from '@react-native-material/core';
+import {  Button,HStack } from '@react-native-material/core';
 import {
   Backdrop,
-  BackdropSubheader,
+ 
   AppBar,
-  IconButton,
+  
 } from "@react-native-material/core";
-import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+
 
 const BackdropPath = () => {
 
@@ -102,7 +102,7 @@ const BackdropPath = () => {
 
     <SafeAreaView >
      
-      <ScrollView horizontal={true} style={{ alignContent: 'space-around' }}  >
+      <ScrollView horizontal={true} style={{ alignContent: 'space-around'}}  >
       <View style={styles.full}>
 
       
@@ -118,64 +118,95 @@ const BackdropPath = () => {
             }
             backLayer={
               <View>
-              <HStack m={4} spacing={10}>
-                <View style={{ width: 110, height: 40, marginHorizontal: 4, }} > <h1 style={styles.text}>Movie Genres </h1> </View>
-                <View style={{ width: 90, height: 40, }} ><Button title='Action' variant="text" color='#fdf102' style={{
+                 <HStack m={4} spacing={10}>
+                  <View style={{width:110,height:40,marginHorizontal:4}}>
+                 <Text style={styles.text}>Movie Genres</Text>
+                 </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Action' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15
                 }} onPress={onPress1} />
-
                 </View>
-                <View style={{ width: 90, height: 40, }}> <Button title='Adventure' variant="text" color='#fdf102' style={{
+                
+                <View style={{ width: 90, height: 40, }}>
+                  <Button title='Adventure' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 9, borderColor: '#fdf102'
-                }} onPress={onPress2} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Animation' variant="text" color='#fdf102' style={{
+                }} onPress={onPress2} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Animation' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 9, borderColor: '#fdf102'
-                }} onPress={onPress4} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Comedy' variant="text" color='#fdf102' style={{
+                }} onPress={onPress4} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Comedy' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPress5} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Crime' variant="text" color='#fdf102' style={{
+                }} onPress={onPress5} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Crime' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPress6} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Family' variant="text" color='#fdf102' style={{
+                }} onPress={onPress6} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Family' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPress7} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Horror' variant="text" color='#fdf102' style={{
+                }} onPress={onPress7} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Horror' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPress8} /></View>
-              </HStack>
+                }} onPress={onPress8} />
+                </View>
+                </HStack>
 
-              <HStack m={4} spacing={10}>
-                <View style={{ width: 110, height: 40, marginHorizontal: 4, }} > <h1 style={styles.text}> Tv Genres </h1> </View>
-                <View style={{ width: 90, height: 40, }} ><Button title='Drama' variant="text" color='#fdf102' style={{
+                <HStack m={4} spacing={10}>
+                <View style={{width:110,height:40,marginHorizontal:4}}>
+                 <Text style={styles.text}>Tv Genres</Text>
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Drama' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15
                 }} onPress={onPressed1} />
-
                 </View>
-                <View style={{ width: 90, height: 40, }}> <Button title='Animation' variant="text" color='#fdf102' style={{
+
+                <View style={{ width: 90, height: 40, }}>
+                  <Button title='Animation' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 9, borderColor: '#fdf102'
-                }} onPress={onPressed2} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Comedy' variant="text" color='#fdf102' style={{
+                }} onPress={onPressed2} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Comedy' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 9, borderColor: '#fdf102'
-                }} onPress={onPressed3} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Crime' variant="text" color='#fdf102' style={{
+                }} onPress={onPressed3} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Crime' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPressed4} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Family' variant="text" color='#fdf102' style={{
+                }} onPress={onPressed4} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Family' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPressed5} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='Kids' variant="text" color='#fdf102' style={{
+                }} onPress={onPressed5} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='Kids' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPressed6} /></View>
-                <View style={{ width: 90, height: 40, }} > <Button title='News' variant="text" color='#fdf102' style={{
+                }} onPress={onPressed6} />
+                </View>
+                <View style={{ width: 90, height: 40, }} >
+                  <Button title='News' variant="text" color='#fdf102' style={{
                   textAlign: "center", fontSize: 15, borderColor: '#fdf102'
-                }} onPress={onPressed7} /></View>
-              </HStack>
+                }} onPress={onPressed7} />
+                </View>
+                </HStack>
               </View>
+            
             }
           >
+     
 
-<BackdropSubheader   style={{ backgroundColor:'#242526',width:800,height:400 }} />
            
           </Backdrop>
 
